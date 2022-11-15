@@ -8,7 +8,7 @@ This module features the following components to be provisioned with different c
 
 - VPC Peering Connection [[aws_vpc_peering_connection](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_peering_connection)]
 - VPC Peering Connection Accepter [[aws_vpc_peering_connection_accepter](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_peering_connection_accepter)]
-- VPC Peering COnnection Option [[aws_vpc_peering_connection_options](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_peering_connection_options)]
+- VPC Peering Connection Option [[aws_vpc_peering_connection_options](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc_peering_connection_options)]
     - For VPC Peering Connection Requester
     - For VPC Peering Connection Accepter
 - Route [[aws_route](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route)]
@@ -61,6 +61,15 @@ providers = {
     aws.peer = <provider for Accepter>
 }
 ```
+- Connection options can't be set until the connection has been accepted. So,
+    - If `vpc_peering_connection_handler` is set as `both`
+        - `allow_owner_vpc_dns_resolution` and `allow_peer_vpc_dns_resolution` can only be set `true` if `auto_accept_peering` is also set `true`
+    - If `vpc_peering_connection_handler` is set as `owner`,
+        - `allow_peer_vpc_dns_resolution` must be set `false`
+        - `allow_owner_vpc_dns_resolution` must be set `false` and should only set `true` once connection is accepted by Peer
+    - If `vpc_peering_connection_handler` is set as `peer`,
+        - `allow_owner_vpc_dns_resolution` must be set `false`
+        - `allow_peer_vpc_dns_resolution` can only be set `true` if `auto_accept_peering` is also set `true`.
 
 ### Outputs
 
