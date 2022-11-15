@@ -40,7 +40,7 @@ Refer [Configuration Examples](https://github.com/arjstack/terraform-aws-example
 | <a name="owner_vpc_id"></a> [owner_vpc_id](#input\_owner\_vpc\_id) | The ID of the owner VPC. | `string` |  | yes |  |
 | <a name="peer_vpc_id"></a> [peer_vpc_id](#input\_peer\_vpc\_id) | The ID of the VPC with which you are creating the VPC Peering Connection. | `string` |  | yes |  |
 | <a name="peer_vpc_region"></a> [peer_vpc_region](#input\_peer\_vpc\_region) | The region of the Peer VPC of the VPC Peering Connection. | `string` | `null` | no |  |
-| <a name="peering_connection_id"></a> [peering_connection_id](#input\_peering\_connection\_id) | VPC Peering Connection ID. Required if `vpc_connection_side` is set as `peer` | `string` | `null` | no |  |
+| <a name="peering_connection_id"></a> [peering_connection_id](#input\_peering\_connection\_id) | VPC Peering Connection ID. Required if `vpc_peering_connection_handler` is set as `peer` | `string` | `null` | no |  |
 | <a name="auto_accept_peering"></a> [auto_accept_peering](#input\_auto\_accept\_peering) | Flag to decide if peering request should be accepted. | `bool` | `false` | no |  |
 | <a name="allow_owner_vpc_dns_resolution"></a> [allow_owner_vpc_dns_resolution](#input\_allow\_owner\_vpc\_dns\_resolution) | Flag to decide if allow a local VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the peer VPC. | `bool` | `false` | no |  |
 | <a name="allow_peer_vpc_dns_resolution"></a> [allow_peer_vpc_dns_resolution](#input\_allow\_peer\_vpc\_dns\_resolution) | Flag to decide if allow a local VPC to resolve public DNS hostnames to private IP addresses when queried from instances in the peer VPC. | `bool` | `false` | no |  |
